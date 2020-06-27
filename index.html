@@ -3,9 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c929a84fca.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Vic's Weather Dashboard</title>
 </head>
 <body>
-    
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1 w-100 text-center">Vic's Weather Dashboard</span>
+    </nav>
+   
+    <div class="container">
+        <div class="row">
+            <!--start search function and Clear History section-->
+            <div class="col-4">          
+                <p class="search-header">Search for a city</p>
+                <div class="input-group mb-3">
+                    <input id="city-input" type="text" class="form-control" placeholder="Enter City Name" aria-label="Enter City Name" aria-describedby="search-button">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary">Clear History</button>
+                <form id="history"></form> 
+            </div>
+            
+            <div class="col-8">
+                <!-- start of current weather info-->
+                <div class="row mr-0">
+                    <div class="col-12 border border-dark rounded m-3">
+                        <div class="row">
+                            <div class="col-12">  
+                                <span id="city-name" class="city-name align-middle">City Name placeholder</span>
+                            </div>
+                        </div>  
+                        <div class="row">
+                            <div class="col-12">
+                                <p id="temperature">Temp</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p id="humidity">humidity</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p id="wind-speed">wind</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 d-flex">
+                                <p id="UV-index">uv index</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Start of 5 day forcast-->    
+                <div class="row">
+                    <div class="col-12">
+                        <h3>5-Day Forcast</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col forcast"></div>
+                    <div class="col forcast"></div>
+                    <div class="col forcast"></div>
+                    <div class="col forcast"></div>
+                    <div class="col forcast"></div>
+                </div>        
+            </div>  
+        </div>
+    </div>    
+
+    <script src="./assets/js/script.js"></script>   
 </body>
 </html>
