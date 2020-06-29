@@ -1,4 +1,4 @@
-
+//API Calls
 var API01 = "https://api.openweathermap.org/data/2.5/weather?q=";
 var API01Key = "&units=imperial&appid=13bb915a529e6e3d8aaaafecaadcbe28";
 var API02 = "https://api.openweathermap.org/data/2.5/onecall?lat=";
@@ -17,6 +17,7 @@ var historyEl = document.getElementById("history");
 var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 console.log(searchHistory);
 
+// function that executes main function
 var citySubmitHandler = function(event) {
     event.preventDefault();
     var cityName = inputEl.value.trim();
@@ -30,13 +31,14 @@ var citySubmitHandler = function(event) {
     localStorage.setItem("search",JSON.stringify(searchHistory));
     renderSearchHistory();
 };
-
+// function clears local storage and search history list
 var clearSubmitHandler = function(event) {
     searchHistory = [];
     renderSearchHistory();
 };
-
+//Main funcition that retrieves weather information
 var getCurrentWeather = function(cityName) {
+    //First API Call
     fetch(API01 + cityName + API01Key).then(function(response) {
         response.json().then(function(data) {
             var weatherPic = data.weather[0].icon;
@@ -48,6 +50,7 @@ var getCurrentWeather = function(cityName) {
             var lat = data.coord.lat;
             var lon = data.coord.lon;
             var API02L = lat + "&lon=" + lon; 
+    // Second API Call        
     fetch(API02 + API02L + API02Key).then(function(response) {
         response.json().then(function(data) {
             var currentUVI = data.current.uvi;
@@ -89,6 +92,7 @@ var getCurrentWeather = function(cityName) {
     });//end of firstAPI call
 };//end of getCurrentWeather function
 
+//function adds each search to the search history list
 var renderSearchHistory = function() {
     historyEl.innerHTML = "";
     for (let i=0; i<searchHistory.length; i++) {
@@ -108,7 +112,7 @@ renderSearchHistory();
 if (searchHistory.length > 0) {
     getCurrentWeather(searchHistory[searchHistory.length - 1]);
 }
-
+//click handler that executes main script
 searchEl.addEventListener("click", citySubmitHandler);
-
+// click handler that clears search history
 clearEl.addEventListener("click", clearSubmitHandler);
